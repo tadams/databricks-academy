@@ -75,22 +75,6 @@ df.show(truncate=False)
 from pyspark.sql.functions import get_json_object, explode, array_join, from_json, col, concat_ws, concat, arrays_zip, zip_with
 from pyspark.sql.types import ArrayType, StringType, StructType, StructField, IntegerType, MapType
 
-json_column = df.json_string
-
-# json_schema = StructType([
-#     StructField("inputs", StringType(), True),
-#     StructField("base_entities", ArrayType(StringType()), True),
-#     StructField("qualifiers", StructType([
-#         StructField("attribute", StructType([
-#             StructField("uom", ArrayType(StringType()), True),
-#             StructField("other", ArrayType(StringType()), True)
-#         ]), True),
-#         StructField("brand", ArrayType(StringType()), True)
-#     ]), True),
-#     StructField("part_no_entities", ArrayType(StringType()), True),
-#     StructField("sku_entities", ArrayType(StringType()), True),
-# ])
-
 json_schema = StructType([
     StructField("inputs", StringType(), True),
     StructField("base_entities", ArrayType(StringType()), True),
@@ -124,7 +108,3 @@ df2 = (
 df2.printSchema()
 
 df2.drop("json_string", "json").show(truncate=False)
-
-# COMMAND ----------
-
-
